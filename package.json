@@ -4,9 +4,9 @@
 	"description": "This is a sample plugin for Obsidian (https://obsidian.md)",
 	"main": "main.js",
 	"scripts": {
-		"dev": "node esbuild.config.mjs",
-		"build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production",
-		"version": "node version-bump.mjs && git add manifest.json versions.json"
+		"dev": "echo Use command: make dev",
+		"build": "echo Use command: make release",
+		"version": "echo Use command: make version"
 	},
 	"keywords": [],
 	"author": "",
