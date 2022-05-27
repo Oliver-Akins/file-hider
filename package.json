@@ -1,7 +1,7 @@
 {
-	"name": "obsidian-sample-plugin",
-	"version": "1.0.1",
-	"description": "This is a sample plugin for Obsidian (https://obsidian.md)",
+	"name": "oa-file-hider",
+	"version": "1.0.0",
+	"description": "An Obsidian plugin that allows hiding files and folders in the built-in file explorer",
 	"main": "main.js",
 	"scripts": {
 		"dev": "echo Use command: make dev",
@@ -9,8 +9,8 @@
 		"version": "echo Use command: make version"
 	},
 	"keywords": [],
-	"author": "",
-	"license": "MIT",
+	"author": "Oliver Akins",
+	"license": "GNU-GPL3.0",
 	"devDependencies": {
 		"@types/node": "^16.11.6",
 		"@typescript-eslint/eslint-plugin": "^5.2.0",
