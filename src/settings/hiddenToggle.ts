@@ -9,7 +9,7 @@ export class VisibilityToggleSetting {
 		.setDesc(`Toggle whether or not files and folders that are told to be hidden will be hidden or not.`)
 		.addToggle(toggle => {
 			toggle
-			.setValue(plugin.settings.hidden)
+			.setValue(!plugin.settings.hidden)
 			.onChange(() => {
 				plugin.toggleVisibility();
 			});
