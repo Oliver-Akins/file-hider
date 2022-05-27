@@ -1,11 +1,3 @@
-.PHONY: dev release clean
-
-OUT_DIR=dist
-ENTRYPOINT=main.js
-
-RELEASE_SCRIPT=utils/release.py
-
-
 dev:
 	node esbuild.config.mjs
 
@@ -18,5 +10,4 @@ version:
 	git add manifest.json versions.json
 
 clean:
-#	rm -f *.js
-	rm -rf $(OUT_DIR)
+	rm -rf main.js
