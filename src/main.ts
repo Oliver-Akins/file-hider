@@ -35,23 +35,39 @@ export default class FileHider extends Plugin {
 				};
 				if (file instanceof TFolder) {
 					menu.addItem((i) => {
-						i.setTitle(`Hide Folder`)
-						.setIcon(`minus-with-circle`)
-						.onClick(() => {
-							let rule = createStyleLine(`folder`, file.path);
-							this.style.insertRule(rule);
-							this.settings.hiddenFolders.push(file.path);
-						});
+						if (this.settings.hiddenFolders.includes(file.path)) {
+							i.setTitle(`Unhide Folder`)
+							.setIcon(`eye`)
+							.onClick(() => {
+								this.unhideFolder(file.path);
+							});
+						} else {
+							i.setTitle(`Hide Folder`)
+							.setIcon(`eye-off`)
+							.onClick(() => {
+								let rule = createStyleLine(`folder`, file.path);
+								this.style.insertRule(rule);
+								this.settings.hiddenFolders.push(file.path);
+							});
+						};
 					});
 				} else {
 					menu.addItem((i) => {
-						i.setTitle(`Hide File`)
-						.setIcon(`minus-with-circle`)
-						.onClick((e) => {
-							let rule = createStyleLine(`file`, file.path);
-							this.style.insertRule(rule);
-							this.settings.hiddenFiles.push(file.path);
-						});
+						if (this.settings.hiddenFiles.includes(file.path)) {
+							i.setTitle(`Unhide File`)
+							.setIcon(`eye`)
+							.onClick((e) => {
+								this.unhideFile(file.path);
+							});
+						} else {
+							i.setTitle(`Hide File`)
+							.setIcon(`eye-off`)
+							.onClick((e) => {
+								let rule = createStyleLine(`file`, file.path);
+								this.style.insertRule(rule);
+								this.settings.hiddenFiles.push(file.path);
+							});
+						};
 					});
 				};
 			})
@@ -113,6 +129,35 @@ export default class FileHider extends Plugin {
 		};
 		this.settings.hidden = !this.settings.hidden;
 	};
+
+	unhideFolder(folder: string) {
+		let i = this.settings.hiddenFolders.indexOf(folder);
+		this.settings.hiddenFolders.splice(i, 1);
+
+		// Find and remove the CSS style from the system
+		for (var j in this.style.cssRules) {
+			let rule = this.style.cssRules[j];
+			if (rule.cssText == createStyleLine(`folder`, folder)) {
+				this.style.deleteRule(parseInt(j));
+			};
+		};
+	};
+
+	unhideFile(file: string) {
+		let i = this.settings.hiddenFiles.indexOf(file);
+		this.settings.hiddenFiles.splice(i, 1);
+
+		// Find and remove the CSS style from the system
+		for (var j in this.style.cssRules) {
+			try { parseInt(j) } catch (e) { console.log(`skipping`, j); continue; };
+
+			let rule = this.style.cssRules[j];
+			if (rule.cssText == createStyleLine(`file`, file)) {
+				this.style.deleteRule(parseInt(j));
+				break;
+			};
+		};
+	}
 };
 
 

@@ -23,17 +23,7 @@ export class DirectoryModal extends Modal {
 				btn.setIcon(`cross`)
 				.setTooltip(`Remove Folder`)
 				.onClick((e) => {
-					let i = this.plugin.settings.hiddenFolders.indexOf(folder);
-					this.plugin.settings.hiddenFolders.splice(i, 1);
-
-					// Find and remove the CSS style from the system
-					for (var j in this.plugin.style.cssRules) {
-						let rule = this.plugin.style.cssRules[j];
-						if (rule.cssText == createStyleLine(`folder`, folder)) {
-							this.plugin.style.deleteRule(parseInt(j));
-						};
-					};
-
+					this.plugin.unhideFolder(folder);
 					c.hide();
 				});
 			});
