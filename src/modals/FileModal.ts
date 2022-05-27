@@ -1,5 +1,6 @@
 import { Modal, Setting } from "obsidian";
 import FileHider from "../main";
+import { createStyleLine } from "../utils";
 
 export class FileModal extends Modal {
 	private plugin: FileHider;
@@ -22,7 +23,21 @@ export class FileModal extends Modal {
 				btn.setIcon(`cross`)
 				.setTooltip(`Remove File`)
 				.onClick((e) => {
-					console.log(file);
+					let i = this.plugin.settings.hiddenFiles.indexOf(file);
+					this.plugin.settings.hiddenFiles.splice(i, 1);
+
+					// Find and remove the CSS style from the system
+					for (var j in this.plugin.style.cssRules) {
+						try { parseInt(j) } catch (e) { console.log(`skipping`, j); continue; };
+
+						let rule = this.plugin.style.cssRules[j];
+						if (rule.cssText == createStyleLine(`file`, file)) {
+							this.plugin.style.deleteRule(parseInt(j));
+							break;
+						};
+					};
+
+					c.hide();
 				});
 			});
 		});
