@@ -6,7 +6,6 @@ import { ManageHiddenFiles } from './settings/manageHiddenFiles';
 import { createStyleLine, findStyleSheet } from './utils';
 
 interface FileHiderSettings {
-	ribbonIcon: boolean;
 	hidden: boolean;
 	hiddenFiles: string[];
 	hiddenFolders: string[];
@@ -15,7 +14,6 @@ interface FileHiderSettings {
 
 export default class FileHider extends Plugin {
 	settings: FileHiderSettings = {
-		ribbonIcon: true,
 		hidden: true,
 		hiddenFiles: [],
 		hiddenFolders: [],
