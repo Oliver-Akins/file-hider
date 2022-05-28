@@ -48,6 +48,7 @@ export default class FileHider extends Plugin {
 								let rule = createStyleLine(`folder`, file.path);
 								this.style.insertRule(rule);
 								this.settings.hiddenFolders.push(file.path);
+								this.saveSettings();
 							});
 						};
 					});
@@ -66,6 +67,7 @@ export default class FileHider extends Plugin {
 								let rule = createStyleLine(`file`, file.path);
 								this.style.insertRule(rule);
 								this.settings.hiddenFiles.push(file.path);
+								this.saveSettings();
 							});
 						};
 					});
@@ -128,6 +130,7 @@ export default class FileHider extends Plugin {
 			this.style.disabled = false;
 		};
 		this.settings.hidden = !this.settings.hidden;
+		this.saveSettings();
 	};
 
 	unhideFolder(folder: string) {
@@ -141,6 +144,7 @@ export default class FileHider extends Plugin {
 				this.style.deleteRule(parseInt(j));
 			};
 		};
+		this.saveSettings();
 	};
 
 	unhideFile(file: string) {
@@ -157,6 +161,7 @@ export default class FileHider extends Plugin {
 				break;
 			};
 		};
+		this.saveSettings();
 	}
 };
 
