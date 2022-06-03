@@ -1,0 +1,52 @@
+name: Bug report
+description: The template for all 3rd party bug reports
+labels:
+  - bug
+body:
+  - type: dropdown
+    id: platforms
+    attributes:
+      label: Affected Platforms
+      description: >-
+        Select all of the platforms that this bug was tested on before
+        submitting an issue
+      multiple: true
+      options:
+        - Linux
+        - Android
+        - Mac
+        - iOS
+        - Windows
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Expected Behaviour
+      description: Describe you expect to happen
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Actual Behaviour
+      description: Describe what actually happens.
+    validations:
+      required: true
+  - type: checkboxes
+    attributes:
+      label: Have you?
+      options:
+        - label: >-
+            I have checked that there isn't already a bug on GitHub for this
+            issue
+          required: true
+  - type: dropdown
+    attributes:
+      label: Urgenct
+      description: How urgent do you think this problem is?
+      options:
+        - Not Urgent
+        - Mildly Urgent
+        - Urgent
+        - Very Urgent
+    validations:
+      required: true
