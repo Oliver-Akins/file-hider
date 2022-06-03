@@ -127,4 +127,4 @@ class FileHiderSettingsTab extends PluginSettingTab {
 		VisibilityToggleSetting.create(this.plugin, container);
 		ManageHiddenPaths.create(this.plugin, container);
 	};
-}
+};
