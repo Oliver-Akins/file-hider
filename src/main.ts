@@ -1,8 +1,7 @@
-import { ManageHiddenDirectories } from './settings/manageHiddenFolders';
 import { VisibilityToggleCommand } from './commands/toggleVisibility';
 import { VisibilityToggleSetting } from './settings/hiddenToggle';
-import { App, Notice, Plugin, PluginSettingTab, TFolder } from 'obsidian';
-import { ManageHiddenFiles } from './settings/manageHiddenFiles';
+import { App, Plugin, PluginSettingTab, TFolder } from 'obsidian';
+import { ManageHiddenPaths } from './settings/manageHiddenPaths';
 import { changePathVisibility } from './utils';
 
 interface FileHiderSettings {
@@ -103,8 +102,8 @@ export default class FileHider extends Plugin {
 
 	unhidePath(path: string) {
 		let i = this.settings.hiddenList.indexOf(path);
-		changePathVisibility(path, false);
 		this.settings.hiddenList.splice(i, 1);
+		changePathVisibility(path, false);
 		this.saveSettings();
 	};
 };
@@ -126,7 +125,6 @@ class FileHiderSettingsTab extends PluginSettingTab {
 
 		container.empty();
 		VisibilityToggleSetting.create(this.plugin, container);
-		ManageHiddenFiles.create(this.plugin, container);
-		ManageHiddenDirectories.create(this.plugin, container);
+		ManageHiddenPaths.create(this.plugin, container);
 	};
 }
