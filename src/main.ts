@@ -71,10 +71,6 @@ export default class FileHider extends Plugin {
 
 		new VisibilityToggleCommand(this);
 		this.addSettingTab(new FileHiderSettingsTab(this.app, this));
-	}
-
-	onunload() {
-		this.saveSettings();
 	};
 
 	/*
