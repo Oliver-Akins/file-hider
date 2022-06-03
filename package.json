@@ -1,6 +1,6 @@
 {
   "name": "oa-file-hider",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "An Obsidian plugin that allows hiding files and folders in the built-in file explorer",
   "main": "main.js",
   "scripts": {
