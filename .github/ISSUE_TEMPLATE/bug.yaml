@@ -41,7 +41,7 @@ body:
           required: true
   - type: dropdown
     attributes:
-      label: Urgenct
+      label: Urgency
       description: How urgent do you think this problem is?
       options:
         - Not Urgent
