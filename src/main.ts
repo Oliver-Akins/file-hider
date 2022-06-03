@@ -122,11 +122,7 @@ export default class FileHider extends Plugin {
 		if (!this.style) {
 			this.style = findStyleSheet();
 		};
-		if (this.settings.hidden) {
-			this.style.disabled = true;
-		} else {
-			this.style.disabled = false;
-		};
+		this.style.disabled = this.settings.hidden;
 		this.settings.hidden = !this.settings.hidden;
 		this.saveSettings();
 	};
