@@ -15,15 +15,15 @@ You can toggle the visibility status of the files and folders by running the
 
 #### Right Click on Shown File
 If you right click on a file that is set to be hidden, when it is shown in the
-list, you will see an `Unhide File` option, clicking that will remove it from
-the list of hidden files and keep it visible once hidden files are no longer
-visible.
+list, you will see an `Unhide File` or `Unhide Folder` option, clicking that
+will remove it from the list of hidden files and keep it visible once hidden
+files are no longer visible.
 
 #### File/Folder List
 - Open Obsidian's settings
 - Go to the `File Hider` tab
-- Click on either `Manage File List` or `Manage Folder List` to open a list of all hidden files/folders.
-- Click on the `X` button of the file/folder you no longer want hidden.
+- Click on either `Manage` to open a list of all hidden files and folders.
+- Click on the `X` button of the file or folder you no longer want hidden.
 
 
 ### Ribbon Icon
