@@ -30,3 +30,8 @@ files are no longer visible.
 If you want an icon in the ribbon sidebar, I would recommend using
 [Customizable Sidebar](https://github.com/phibr0/obsidian-customizable-sidebar)
 and adding the `File Hider: Toggle Visibility` command.
+
+## Issues? Feature Requests?
+If you want to report a bug or request a new feature, go to the
+[GitHub Repo](https://github.com/Oliver-Akins/file-hider/issues/new/choose) and
+open an issue.
