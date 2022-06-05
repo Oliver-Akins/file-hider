@@ -74,8 +74,3 @@ body:
             I have checked that there isn't already a bug on the GitHub issue
             tracker for this issue
           required: true
-  - type: markdown
-    attributes:
-      value: >-
-        This template was generated with [Issue Forms
-        Creator](https://www.issue-forms-creator.app/)
