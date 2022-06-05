@@ -3,6 +3,22 @@ description: The template for all 3rd party bug reports
 labels:
   - bug
 body:
+  - type: markdown
+    attributes:
+      value: '# Version Information'
+  - type: input
+    id: version
+    attributes:
+      label: Plugin Version
+      placeholder: e.g. 1.1.0
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: Obsidian Version
+      description: What version of Obsidian are you using?
+    validations:
+      required: true
   - type: dropdown
     id: platforms
     attributes:
@@ -19,6 +35,12 @@ body:
         - Windows
     validations:
       required: true
+  - type: markdown
+    attributes:
+      value: |-
+        ---
+
+        # Behaviour Descriptions
   - type: textarea
     attributes:
       label: Expected Behaviour
@@ -31,22 +53,29 @@ body:
       description: Describe what actually happens.
     validations:
       required: true
+  - type: textarea
+    attributes:
+      label: Steps to Reproduce
+      description: >-
+        List steps that can reproduce the issue. If this is left blank, issues
+        may be deemed lower priority and take longer to fix.
+      value: 1. Hide a file/folder
+  - type: markdown
+    attributes:
+      value: |-
+        ---
+
+        # Confirmations
   - type: checkboxes
     attributes:
       label: Have you?
       options:
         - label: >-
-            I have checked that there isn't already a bug on GitHub for this
-            issue
+            I have checked that there isn't already a bug on the GitHub issue
+            tracker for this issue
           required: true
-  - type: dropdown
+  - type: markdown
     attributes:
-      label: Urgency
-      description: How urgent do you think this problem is?
-      options:
-        - Not Urgent
-        - Mildly Urgent
-        - Urgent
-        - Very Urgent
-    validations:
-      required: true
+      value: >-
+        This template was generated with [Issue Forms
+        Creator](https://www.issue-forms-creator.app/)
