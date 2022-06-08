@@ -7,7 +7,7 @@ import { changePathVisibility } from './utils';
 interface FileHiderSettings {
 	hidden: boolean;
 	hiddenList: string[];
-};
+}
 
 
 export default class FileHider extends Plugin {
@@ -20,7 +20,6 @@ export default class FileHider extends Plugin {
 
 	async onload() {
 		await this.loadSettings();
-
 		this.registerEvent(
 			this.app.workspace.on(`file-menu`, (menu, file) => {
 				if (file instanceof TFolder) {
@@ -39,34 +38,36 @@ export default class FileHider extends Plugin {
 								this.settings.hiddenList.push(file.path);
 								this.saveSettings();
 							});
-						};
+						}
 					});
 				} else {
 					menu.addItem((i) => {
 						if (this.settings.hiddenList.includes(file.path)) {
 							i.setTitle(`Unhide File`)
 							.setIcon(`eye`)
-							.onClick((e) => {
+							.onClick(() => {
 								this.unhidePath(file.path);
 							});
 						} else {
 							i.setTitle(`Hide File`)
 							.setIcon(`eye-off`)
-							.onClick((e) => {
+							.onClick(() => {
 								changePathVisibility(file.path, this.settings.hidden);
 								this.settings.hiddenList.push(file.path);
 								this.saveSettings();
 							});
-						};
+						}
 					});
-				};
+				}
 			})
 		);
 
-		this.app.workspace.onLayoutReady(() => {
+
+		this.app.workspace.onLayoutReady( async () => {
+			await sleep(50)
 			for (const path of this.settings.hiddenList) {
-				changePathVisibility(path, this.settings.hidden);
-			};
+				await changePathVisibility(path, this.settings.hidden);
+			}
 		});
 
 		new VisibilityToggleCommand(this);
@@ -88,19 +89,19 @@ export default class FileHider extends Plugin {
 	/*
 	Enables/Disables the file visibility based. (gets the stylesheet if needed)
 	*/
-	toggleVisibility() {
+	async toggleVisibility() {
 		this.settings.hidden = !this.settings.hidden;
 		for (const path of this.settings.hiddenList) {
 			changePathVisibility(path, this.settings.hidden);
-		};
-		this.saveSettings();
+		}
+		await this.saveSettings();
 	};
 
-	unhidePath(path: string) {
+	async unhidePath(path: string) {
 		let i = this.settings.hiddenList.indexOf(path);
 		this.settings.hiddenList.splice(i, 1);
 		changePathVisibility(path, false);
-		this.saveSettings();
+		await this.saveSettings();
 	};
 };
 
@@ -123,4 +124,4 @@ class FileHiderSettingsTab extends PluginSettingTab {
 		VisibilityToggleSetting.create(this.plugin, container);
 		ManageHiddenPaths.create(this.plugin, container);
 	};
-};
+}
