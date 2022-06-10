@@ -5,6 +5,15 @@ labels:
 body:
   - type: markdown
     attributes:
+      value: >-
+        # Before You Begin
+        Make sure that you have checked the [issues](https://github.com/Oliver-Akins/file-hider/issues)
+        page for any bug reports that are similar to yours, if you've found a
+        similar one, make a comment on that issue with your extra information.
+
+        ---
+  - type: markdown
+    attributes:
       value: '# Version Information'
   - type: input
     id: version
@@ -60,17 +69,3 @@ body:
         List steps that can reproduce the issue. If this is left blank, issues
         may be deemed lower priority and take longer to fix.
       value: 1. Hide a file/folder
-  - type: markdown
-    attributes:
-      value: |-
-        ---
-
-        # Confirmations
-  - type: checkboxes
-    attributes:
-      label: Have you?
-      options:
-        - label: >-
-            I have checked that there isn't already a bug on the GitHub issue
-            tracker for this issue
-          required: true
