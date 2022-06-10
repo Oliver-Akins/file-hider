@@ -7,6 +7,7 @@ body:
     attributes:
       value: >-
         # Before You Begin
+
         Make sure that you have checked the [issues](https://github.com/Oliver-Akins/file-hider/issues)
         page for any bug reports that are similar to yours, if you've found a
         similar one, make a comment on that issue with your extra information.
