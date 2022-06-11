@@ -1,4 +1,4 @@
-export async function changePathVisibility(path: string, hide: boolean) {
+export function changePathVisibility(path: string, hide: boolean) {
 	let n = document.querySelector(`[data-path="${path}"]`);
 	if (!n) {
 		return;

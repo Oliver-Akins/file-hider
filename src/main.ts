@@ -19,6 +19,7 @@ export default class FileHider extends Plugin {
 	style: CSSStyleSheet|null = null;
 
 	async onload() {
+
 		await this.loadSettings();
 		this.registerEvent(
 			this.app.workspace.on(`file-menu`, (menu, file) => {
@@ -63,7 +64,7 @@ export default class FileHider extends Plugin {
 		);
 
 
-		this.app.workspace.onLayoutReady( async () => {
+		this.app.workspace.onLayoutReady(async () => {
 			await sleep(50)
 			for (const path of this.settings.hiddenList) {
 				await changePathVisibility(path, this.settings.hidden);
