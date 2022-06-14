@@ -35,3 +35,7 @@ and adding the `File Hider: Toggle Visibility` command.
 If you want to report a bug or request a new feature, go to the
 [GitHub Repo](https://github.com/Oliver-Akins/file-hider/issues/new/choose) and
 open an issue.
+
+## Contributing
+If you would like to contribute to the codebase, please make sure to read the
+[contributing guidelines](https://github.com/Oliver-Akins/file-hider/blob/main/.github/contributing.md)
