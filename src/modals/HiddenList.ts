@@ -17,17 +17,18 @@ export class HiddenPathsModal extends Modal {
 		this.plugin.settings.hiddenList.forEach(path => {
 			let c = body.createEl(`div`);
 			new Setting(c)
-			.setName(path)
-			.addButton(btn => {
-				btn.setIcon(`cross`)
-				.setTooltip(`Remove`)
-				.onClick((e) => {
-					this.plugin.unhidePath(path);
-					c.hide();
+				.setName(path)
+				.addButton(btn => {
+					btn
+						.setIcon(`cross`)
+						.setTooltip(`Remove`)
+						.onClick(() => {
+							this.plugin.unhidePath(path);
+							c.hide();
+						});
+					});
 				});
-			});
-		});
-	}
+		}
 
 	onClose() {
 		const {contentEl} = this;

@@ -3,9 +3,9 @@ export function changePathVisibility(path: string, hide: boolean) {
 	if (!n) {
 		return;
 	}
-	let p = n.parentElement
+	let p = n.parentElement;
 	if (hide) {
-		p.style.display = `none`
+		p.style.display = `none`;
 	} else {
 		p.style.display = ``;
 	}

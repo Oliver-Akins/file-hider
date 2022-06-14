@@ -21,42 +21,47 @@ export default class FileHider extends Plugin {
 	async onload() {
 
 		await this.loadSettings();
+		console.log('FileHider loaded');
 		this.registerEvent(
 			this.app.workspace.on(`file-menu`, (menu, file) => {
 				if (file instanceof TFolder) {
 					menu.addItem((i) => {
 						if (this.settings.hiddenList.includes(file.path)) {
-							i.setTitle(`Unhide Folder`)
-							.setIcon(`eye`)
-							.onClick(() => {
-								this.unhidePath(file.path);
-							});
+							i
+								.setTitle(`Unhide Folder`)
+								.setIcon(`eye`)
+								.onClick(() => {
+									this.unhidePath(file.path);
+								});
 						} else {
-							i.setTitle(`Hide Folder`)
-							.setIcon(`eye-off`)
-							.onClick(() => {
-								changePathVisibility(file.path, this.settings.hidden);
-								this.settings.hiddenList.push(file.path);
-								this.saveSettings();
-							});
+							i
+								.setTitle(`Hide Folder`)
+								.setIcon(`eye-off`)
+								.onClick(() => {
+									changePathVisibility(file.path, this.settings.hidden);
+									this.settings.hiddenList.push(file.path);
+									this.saveSettings();
+								});
 						}
 					});
 				} else {
 					menu.addItem((i) => {
 						if (this.settings.hiddenList.includes(file.path)) {
-							i.setTitle(`Unhide File`)
-							.setIcon(`eye`)
-							.onClick(() => {
-								this.unhidePath(file.path);
-							});
+							i
+								.setTitle(`Unhide File`)
+								.setIcon(`eye`)
+								.onClick(() => {
+									this.unhidePath(file.path);
+								});
 						} else {
-							i.setTitle(`Hide File`)
-							.setIcon(`eye-off`)
-							.onClick(() => {
-								changePathVisibility(file.path, this.settings.hidden);
-								this.settings.hiddenList.push(file.path);
-								this.saveSettings();
-							});
+							i
+								.setTitle(`Hide File`)
+								.setIcon(`eye-off`)
+								.onClick(() => {
+									changePathVisibility(file.path, this.settings.hidden);
+									this.settings.hiddenList.push(file.path);
+									this.saveSettings();
+								});
 						}
 					});
 				}
@@ -65,9 +70,9 @@ export default class FileHider extends Plugin {
 
 
 		this.app.workspace.onLayoutReady(async () => {
-			await sleep(50)
+			await sleep(50);
 			for (const path of this.settings.hiddenList) {
-				await changePathVisibility(path, this.settings.hidden);
+				changePathVisibility(path, this.settings.hidden);
 			}
 		});
 
