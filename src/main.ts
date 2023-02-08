@@ -63,10 +63,14 @@ export default class FileHider extends Plugin {
 			})
 		);
 
-		this.app.workspace.onLayoutReady(() => {
-			for (const path of this.settings.hiddenList) {
-				changePathVisibility(path, this.settings.hidden);
-			};
+		this.app.workspace.onLayoutReady(() => 
+		{
+			// Timeout is used to delay until the file explorer is loaded. Delay of 0 works, but I set it to 200 just to be safe.
+			setTimeout(() => {
+				for (const path of this.settings.hiddenList) {
+					changePathVisibility(path, this.settings.hidden);
+				};
+			}, 200);
 		});
 
 		new VisibilityToggleCommand(this);
