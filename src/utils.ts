@@ -1,5 +1,6 @@
 export function changePathVisibility(path: string, hide: boolean) {
-	let n = document.querySelector(`[data-path="${path}"]`);
+	let escapedPath = CSS.escape(path);
+	let n = document.querySelector(`[data-path="${escapedPath}"]`);
 	if (!n) {
 		return;
 	};
